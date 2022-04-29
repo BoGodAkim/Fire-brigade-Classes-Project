@@ -1,0 +1,100 @@
+<mxfile host="65bd71144e">
+    <diagram id="EfrUJ--nyo37_WE-xoa-" name="Страница 1">
+        <mxGraphModel dx="1758" dy="987" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="FireStation" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="930" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-name: string&#10;-address: string&#10;-phone: string&#10;-fire_brigades: vector&lt;FireBrigade&gt;&#10;-free_fire_brigades: int&#10;-calls: queue&lt;Call&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="26" width="230" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="120" width="230" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="-add_fire_brigade()&#10;-remove_fire_brigade()&#10;-manage_fire_brigade()&#10;-print_fire_brigades()&#10;-print_calls()&#10;-add_call()&#10;-remove_call()&#10;-send_brigades()&#10;-choose_brigade(): FireBrigade *&#10;-choose_call(): Call *&#10;+FireStation()   &#10;+enter_menu()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="128" width="230" height="182" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="FireBridge" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="10" width="190" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="-truck: vector&lt;FireTruck&gt;&#10;-personal: vector&lt;Person&gt; &#10;-call = nullptr: Call *" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6">
+                    <mxGeometry y="26" width="190" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="6">
+                    <mxGeometry y="80" width="190" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="-add_truck()&#10;-remove_truck()&#10;-add_person()&#10;-remove_person()&#10;-manage_trucks()&#10;-manage_personal()&#10;-print_trucks()&#10;-print_personal()&#10;-print_call()&#10;-return_to_station()&#10;-send_brigade(call: Call *)&#10;-choose_truck(): FireTruck *&#10;-choose_person(): Person *&#10;+FireBrigade()&#10;+enter_menu()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6">
+                    <mxGeometry y="88" width="190" height="222" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Person" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="600" width="690" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="-name: string&#10;-surname: string&#10;-phone: string&#10;-address: string&#10;-email: string&#10;-birth_date: string&#10;-passport_number: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="10">
+                    <mxGeometry y="26" width="690" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="10">
+                    <mxGeometry y="130" width="690" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="+Person()&#10;+Person(name: string, surname: string, phone: string, address: string, email: string, birth_date: string, passport_number: string)&#10;-update_person_data()&#10;-print_person_data()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="10">
+                    <mxGeometry y="138" width="690" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="FireTruck" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="360" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="-model: string&#10;-number: int&#10;-year: int&#10;-VIN: string&#10;-mileage: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="14">
+                    <mxGeometry y="26" width="400" height="84" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="14">
+                    <mxGeometry y="110" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="+FireTruck()&#10;+FireTruck(model: string, number: int, year: int, VIN: string, mileage: int)&#10;+update_truck_data()&#10;+print_truck_data()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="14">
+                    <mxGeometry y="118" width="400" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Call" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="360" width="550" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="-address: string&#10;-type: string&#10;-priority: int&#10;-fireBrigades: vector&lt;FireBrigade *&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="18">
+                    <mxGeometry y="26" width="550" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="18">
+                    <mxGeometry y="90" width="550" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="+Call()&#10;+~Call()&#10;+Call(address: string, type: string, priority: int)&#10;+add_fire_brigade(fireBrigade: FireBrigade *)&#10;+remove_fire_brigade()&#10;+choose_fire_brigade(): FireBridge *&#10;+print_fire_brigades()&#10;+print_call()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="18">
+                    <mxGeometry y="98" width="550" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.518;exitY=1.021;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="5">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="840" y="450" as="sourcePoint"/>
+                        <mxPoint x="1049" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="endArrow=block;startArrow=block;endFill=1;startFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="18">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="730" y="230" as="sourcePoint"/>
+                        <mxPoint x="890" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.478;exitY=1.012;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="10">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="340" y="390" as="sourcePoint"/>
+                        <mxPoint x="500" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="14">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="280" y="390" as="sourcePoint"/>
+                        <mxPoint x="440" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.324;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5" target="9">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="680" y="130" as="sourcePoint"/>
+                        <mxPoint x="840" y="130" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
