@@ -11,7 +11,7 @@ FireStation::FireStation()
     cout << "Enter the phone number of the fire station: ";
     getline(cin, phone);
     free_fire_brigades = 0;
-    enter_menu();
+    this->enter_menu();
 }
 
 void FireStation::enter_menu()
@@ -233,6 +233,7 @@ list<FireBrigade>::iterator FireStation::choose_brigade()
         cout << "Fire brigade not found.\n";
         return this->choose_brigade();
     case 2:
+    {
         cout << "Enter the number of the fire brigade: ";
         int number;
         cin >> number;
@@ -245,6 +246,7 @@ list<FireBrigade>::iterator FireStation::choose_brigade()
         auto it_fire_brigade = this->fire_brigades.begin();
         advance(it_fire_brigade, number - 1);
         return it_fire_brigade;
+    }
     default:
         cout << "Invalid option. Try again.\n";
         return this->choose_brigade();
@@ -522,6 +524,24 @@ list<FireTruck>::iterator FireBrigade::choose_truck()
     return it_truck;
 }
 
+list<Person>::iterator FireBrigade::choose_person()
+{
+    int number;
+    cout << "Enter the number of the person: ";
+    cin >> number;
+    cin.ignore();
+    while (number < 1 || number > this->personal.size())
+    {
+        cout << "Wrong number.\n";
+        cout << "Enter the number of the person: ";
+        cin >> number;
+        cin.ignore();
+    }
+    auto it_person = this->personal.begin();
+    advance(it_person, number - 1);
+    return it_person;
+}
+
 void FireBrigade::enter_menu()
 {
     int option;
@@ -540,45 +560,45 @@ void FireBrigade::enter_menu()
     cin >> option;
     cin.ignore();
 
-        switch (option)
-        {
-        case 1:
-            this->add_truck();
-            break;
-        case 2:
-            this->add_person();
-            break;
-        case 3:
-            this->remove_truck();
-            break;
-        case 4:
-            this->remove_person();
-            break;
-        case 5:
-            this->manage_truck();
-            break;
-        case 6:
-            this->manage_person();
-            break;
-        case 7:
-            this->print_trucks();
-            break;
-        case 8:
-            this->print_personal();
-            break;
-        case 9:
-            this->print_call();
-            break;
-        case 10:
-            this->return_to_station();
-            break;
-        case 0:
-            break;
-        default:
-            cout << "Wrong option.\n";
-            this->enter_menu();
-            break;
-        }
+    switch (option)
+    {
+    case 1:
+        this->add_truck();
+        break;
+    case 2:
+        this->add_person();
+        break;
+    case 3:
+        this->remove_truck();
+        break;
+    case 4:
+        this->remove_person();
+        break;
+    case 5:
+        this->manage_truck();
+        break;
+    case 6:
+        this->manage_person();
+        break;
+    case 7:
+        this->print_trucks();
+        break;
+    case 8:
+        this->print_personal();
+        break;
+    case 9:
+        this->print_call();
+        break;
+    case 10:
+        this->return_to_station();
+        break;
+    case 0:
+        break;
+    default:
+        cout << "Wrong option.\n";
+        this->enter_menu();
+        break;
+    }
 }
 
 Person::Person(string name, string surname, string rank, string phone, string address, string email, string birth_date, string passport_number)
@@ -644,7 +664,7 @@ int Call::number_of_fire_brigades()
 
 void Call::print_fire_brigades()
 {
-    for(auto it_fire_brigade : this->fireBrigades)
+    for (auto it_fire_brigade : this->fireBrigades)
     {
         it_fire_brigade->print_brigade();
     }
@@ -657,7 +677,7 @@ void Call::add_fire_brigade(FireBrigade *fire_brigade)
 
 void Call::remove_fire_brigades()
 {
-    for(auto it_fire_brigade : this->fireBrigades)
+    for (auto it_fire_brigade : this->fireBrigades)
     {
         it_fire_brigade->return_to_station();
     }
@@ -667,4 +687,10 @@ void Call::remove_fire_brigades()
 Call::~Call()
 {
     this->remove_fire_brigades();
+}
+
+int main()
+{
+    FireStation fire_station;
+    return 0;
 }

@@ -58,7 +58,7 @@ private:
     void print_personal();                    // Function which print all persons in the list
     void print_call();                        // Function which print the call which the fire brigade is assigned to
 public:
-    FireBrigade();                 // Constructor
+    FireBrigade() = default;       // Constructor
     FireBrigade(string name);      // Constructor with parameter
     void enter_menu();             // Function which ask the duty manager to choose an option and call the function which correspond to the option
     bool is_free();                // Function which return true if the fire brigade is free
@@ -79,7 +79,7 @@ public:
     string email;                                                                                                                            // email of the person
     string birth_date;                                                                                                                       // birth date of the person
     string passport_number;                                                                                                                  // passport number of the person
-    Person();                                                                                                                                // Constructor
+    Person() = default;                                                                                                                      // Constructor
     Person(string name, string surname, string rank, string phone, string address, string email, string birth_date, string passport_number); // Constructor with parameters
     void print_person_data();                                                                                                                // Function which print the person data
 };
@@ -93,7 +93,7 @@ private:
 public:
     string number;                                                             // number of the fire truck
     int mileage;                                                               // mileage of the fire truck
-    FireTruck();                                                               // Constructor
+    FireTruck() = default;                                                     // Constructor
     FireTruck(string model, string number, int year, string VIN, int mileage); // Constructor with parameters
     void print_truck_data();                                                   // Function which print the fire truck data
 };
@@ -107,7 +107,7 @@ private:
     list<FireBrigade *> fireBrigades; // list of fire brigades which are assigned to the call
 
 public:
-    Call();                                          // Constructor
+    Call() = default;                                // Constructor
     ~Call();                                         // Destructor
     Call(string address, string type, int priority); // Constructor with parameters
     void add_fire_brigade(FireBrigade *fireBrigade); // Function which add a fire brigade which is assigned to the call
