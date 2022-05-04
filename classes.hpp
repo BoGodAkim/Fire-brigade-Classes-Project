@@ -108,7 +108,6 @@ private:
 
 public:
     Call() = default;                                // Constructor
-    ~Call();                                         // Destructor
     Call(string address, string type, int priority); // Constructor with parameters
     void add_fire_brigade(FireBrigade *fireBrigade); // Function which add a fire brigade which is assigned to the call
     void remove_fire_brigades();                     // Function which delete the fire brigade which is assigned to the call and call FireBrigade::return_to_station()

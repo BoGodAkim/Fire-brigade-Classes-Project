@@ -79,6 +79,11 @@ void FireStation::add_fire_brigade()
 
 void FireStation::remove_fire_brigade()
 {
+    if (this->free_fire_brigades == 0)
+    {
+        cout << "There are no free fire brigades.\n";
+        return;
+    }
     cout << "Choose the fire brigade to remove: ";
     print_free_fire_brigades();
     auto it_fire_brigade = this->choose_brigade();
@@ -93,6 +98,11 @@ void FireStation::remove_fire_brigade()
 
 void FireStation::manage_fire_brigade()
 {
+    if (this->free_fire_brigades == 0)
+    {
+        cout << "There are no free fire brigades.\n";
+        return;
+    }
     cout << "Choose the fire brigade to manage: ";
     print_free_fire_brigades();
     auto it_fire_brigade = this->choose_brigade();
@@ -150,30 +160,39 @@ void FireStation::add_call()
 
 void FireStation::remove_call()
 {
+    if (this->calls.size() == 0)
+    {
+        cout << "There are no calls.\n";
+        return;
+    }
     cout << "Choose the call to remove: ";
+    this->print_calls();
     auto it_call = this->choose_call();
     this->free_fire_brigades += it_call->number_of_fire_brigades();
+    it_call->remove_fire_brigades();
     this->calls.erase(it_call);
 }
 
 void FireStation::send_brigades()
 {
+    if (this->calls.size() == 0)
+    {
+        cout << "There are no calls.\n";
+        return;
+    }
     if (this->free_fire_brigades == 0)
     {
-        cout << "There are no free fire brigades.\n";
+        cout << "There are no free fire brigades." <<this->free_fire_brigades<< endl;
         return;
     }
     cout << "Choose the call to send brigades: ";
+    this->print_calls();
     auto it_call = this->choose_call();
-    if (it_call == this->calls.end())
-    {
-        return;
-    }
     this->print_free_fire_brigades();
     cout << "Choose number of brigades to send: ";
     int brigades_number;
     cin >> brigades_number;
-    while (brigades_number > this->free_fire_brigades)
+    while (brigades_number > this->free_fire_brigades || brigades_number < 0)
     {
         cout << "There are not enough free fire brigades.\n";
         cout << "Choose number of brigades to send: ";
@@ -376,6 +395,11 @@ void FireBrigade::print_personal()
 
 void FireBrigade::remove_truck()
 {
+    if (this->trucks.size() == 0)
+    {
+        cout << "No trucks to remove.\n";
+        return;
+    }
     this->print_trucks();
     auto it_truck = this->choose_truck();
     this->trucks.erase(it_truck);
@@ -383,6 +407,11 @@ void FireBrigade::remove_truck()
 
 void FireBrigade::remove_person()
 {
+    if (this->personal.size() == 0)
+    {
+        cout << "No persones to remove.\n";
+        return;
+    }
     this->print_personal();
     auto it_person = this->choose_person();
     this->personal.erase(it_person);
@@ -408,6 +437,11 @@ void FireBrigade::return_to_station()
 
 void FireBrigade::manage_truck()
 {
+    if (this->trucks.size() == 0)
+    {
+        cout << "No trucks to manage.\n";
+        return;
+    }
     this->print_trucks();
     auto it_truck = this->choose_truck();
     int option;
@@ -430,12 +464,10 @@ void FireBrigade::manage_truck()
         cin.ignore();
         while (mileage < it_truck->mileage)
         {
+            cout << "Mileage can't be less than the current mileage." << endl
+                 << "Enter the new mileage: ";
             cin >> mileage;
             cin.ignore();
-            if (mileage < it_truck->mileage)
-            {
-                cout << "Mileage can't be less than the current mileage.\n";
-            }
         }
         it_truck->mileage = mileage;
         break;
@@ -449,6 +481,11 @@ void FireBrigade::manage_truck()
 
 void FireBrigade::manage_person()
 {
+    if (this->personal.size() == 0)
+    {
+        cout << "No persones to manage.\n";
+        return;
+    }
     this->print_personal();
     auto it_person = this->choose_person();
     int option;
@@ -564,33 +601,43 @@ void FireBrigade::enter_menu()
     {
     case 1:
         this->add_truck();
+        this->enter_menu();
         break;
     case 2:
         this->add_person();
+        this->enter_menu();
         break;
     case 3:
         this->remove_truck();
+        this->enter_menu();
         break;
     case 4:
         this->remove_person();
+        this->enter_menu();
         break;
     case 5:
         this->manage_truck();
+        this->enter_menu();
         break;
     case 6:
         this->manage_person();
+        this->enter_menu();
         break;
     case 7:
         this->print_trucks();
+        this->enter_menu();
         break;
     case 8:
         this->print_personal();
+        this->enter_menu();
         break;
     case 9:
         this->print_call();
+        this->enter_menu();
         break;
     case 10:
         this->return_to_station();
+        this->enter_menu();
         break;
     case 0:
         break;
@@ -654,7 +701,8 @@ void Call::print_call()
 {
     cout << "Address: " << this->address << endl
          << "Type: " << this->type << endl
-         << "Priority: " << this->priority << endl;
+         << "Priority: " << this->priority << endl
+         << "Brigads assigned: " << this->number_of_fire_brigades() << endl;
 }
 
 int Call::number_of_fire_brigades()
@@ -682,11 +730,6 @@ void Call::remove_fire_brigades()
         it_fire_brigade->return_to_station();
     }
     this->fireBrigades.clear();
-}
-
-Call::~Call()
-{
-    this->remove_fire_brigades();
 }
 
 int main()
